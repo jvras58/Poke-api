@@ -1,36 +1,44 @@
-class Cliente:
-    def __init__(self, nome, telefone):
-        self.nome = nome
-        self.telefone = telefone
+from Pokedex import Pokedex
 
-class Pedido:
-    def __init__(self, cliente, itens):
-        self.cliente = cliente
-        self.itens = itens
+def menu():
+    """
+    Exibe um menu de opções para interagir com a Pokedex.
 
-class Restaurante:
-    def __init__(self):
-        self.clientes = []
-        self.pedidos = []
+    Opções disponíveis:
+    1. Adicionar Pokemon
+    2. Mostrar Pokemons
+    3. Atualizar Pokemon
+    4. Remover Pokemon
+    5. Sair
+    """
+    pokedex = Pokedex()
+    while True:
+        print("\n1. Adicionar Pokemon")
+        print("2. Mostrar Pokemons")
+        print("3. Atualizar Pokemon")
+        print("4. Remover Pokemon")
+        print("5. Sair")
+        opcao = input("Escolha uma opção: ")
+        if opcao == '1':
+            nome = input("Digite o nome do Pokemon: ")
+            tipo = input("Digite o tipo do Pokemon: ")
+            regiao = input("Digite a região do Pokemon: ")
+            habilidades = input("Digite as habilidades do Pokemon (separadas por vírgula): ").split(',')
+            pokedex.adicionar_pokemon(nome, tipo, regiao, habilidades)
+        elif opcao == '2':
+            pokedex.mostrar_pokemons()
+        elif opcao == '3':
+            nome = input("Digite o nome do Pokemon: ")
+            tipo = input("Digite o tipo do Pokemon: ")
+            regiao = input("Digite a região do Pokemon: ")
+            habilidades = input("Digite as habilidades do Pokemon (separadas por vírgula): ").split(',')
+            pokedex.atualizar_pokemon(nome, tipo, regiao, habilidades)
+        elif opcao == '4':
+            nome = input("Digite o nome do Pokemon: ")
+            pokedex.remover_pokemon(nome)
+        elif opcao == '5':
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
 
-    def adicionar_cliente(self, nome, telefone):
-        cliente = Cliente(nome, telefone)
-        self.clientes.append(cliente)
-        print("Cliente adicionado com sucesso!")
-
-    def fazer_pedido(self, cliente, itens):
-        pedido = Pedido(cliente, itens)
-        self.pedidos.append(pedido)
-        print("Pedido realizado com sucesso!")
-
-    def mostrar_clientes(self):
-        print("Lista de Clientes:")
-        for cliente in self.clientes:
-            print(f"Nome: {cliente.nome}, Telefone: {cliente.telefone}")
-
-    def mostrar_pedidos(self):
-        print("Lista de Pedidos:")
-        for pedido in self.pedidos:
-            print(f"Cliente: {pedido.cliente.nome}, Itens: {pedido.itens}")
-            
-restaurante = Restaurante()
+menu()
