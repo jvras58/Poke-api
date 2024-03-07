@@ -1,4 +1,3 @@
-
 from api.Pokedex.Pokedex import Pokedex
 
 
@@ -23,6 +22,9 @@ def menu():
         opcao = input("Escolha uma opção: ")
         if opcao == '1':
             nome = input("Digite o nome do Pokemon: ")
+            if pokedex.verificar_pokemon(nome):
+                print(f"Pokemon: {nome} já existe.")
+                continue
             tipo = input("Digite o tipo do Pokemon: ")
             regiao = input("Digite a região do Pokemon: ")
             habilidades = input("Digite as habilidades do Pokemon (separadas por vírgula): ").split(',')
@@ -31,12 +33,19 @@ def menu():
             pokedex.mostrar_pokemons()
         elif opcao == '3':
             nome = input("Digite o nome do Pokemon: ")
-            tipo = input("Digite o tipo do Pokemon: ")
-            regiao = input("Digite a região do Pokemon: ")
-            habilidades = input("Digite as habilidades do Pokemon (separadas por vírgula): ").split(',')
-            pokedex.atualizar_pokemon(nome, tipo, regiao, habilidades)
+            if not pokedex.verificar_pokemon(nome):
+                print(f"Pokemon: {nome} não encontrado.")
+            else:
+                tipo = input("Atualize o tipo do Pokemon: ")
+                regiao = input("Atualize a região do Pokemon: ")
+                habilidades = input(
+                    "Atualize as habilidades do Pokemon (separadas por vírgula): "
+                ).split(",")
+                pokedex.atualizar_pokemon(nome, tipo, regiao, habilidades)
         elif opcao == '4':
             nome = input("Digite o nome do Pokemon: ")
+            if not pokedex.verificar_pokemon(nome):
+                print(f"Pokemon: {nome} não encontrado.")
             pokedex.remover_pokemon(nome)
         elif opcao == '5':
             break

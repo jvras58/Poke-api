@@ -1,5 +1,5 @@
 
-from api.Pokemon.Pokemon import Pokemon
+from Pokemon.Pokemon import Pokemon
 
 
 class Pokedex:
@@ -23,7 +23,7 @@ class Pokedex:
             pokemon = Pokemon(nome, tipo, regiao, habilidades, evolucao)
             self.pokemons.append(pokemon)
             print(f"Pokemon: {pokemon.nome} adicionado com sucesso!")
-    
+
     def atualizar_pokemon(self, nome, tipo, regiao, habilidades):
         """
         Atualiza um Pokémon da Pokédex.
@@ -43,7 +43,7 @@ class Pokedex:
                 print(f"Pokemon: {pokemon.nome} atualizado com sucesso!")
                 return
         print(f"Pokemon: {nome} não encontrado.")
-    
+
     def remover_pokemon(self, nome):
         """
         Remove um Pokémon da Pokédex.
@@ -56,7 +56,6 @@ class Pokedex:
                 self.pokemons.remove(pokemon)
                 print(f"Pokemon: {pokemon.nome} removido com sucesso!")
                 return
-        print(f"Pokemon: {nome} não encontrado.")
 
     def mostrar_pokemons(self):
         """
@@ -66,26 +65,14 @@ class Pokedex:
         for pokemon in self.pokemons:
             print(f"Nome: {pokemon.nome}, Tipo: {pokemon.tipo}, Região: {pokemon.regiao}, Habilidades: {pokemon.habilidades}, Evolução: {pokemon.evolucao.nome if pokemon.evolucao else 'N/A'}")
 
-    # wip: Ainda esta em fase de desenvolvimento
-    def adicionar_evolucao(self, nome, tipo, regiao, habilidades):
+    def verificar_pokemon(self, nome):
         """
-        Adiciona uma evolução ao objeto Pokedex.
+        Verifica se um Pokémon existe na Pokédex.
 
         Args:
             nome (str): O nome do Pokémon.
-            tipo (str): O tipo do Pokémon.
-            regiao (str): A região do Pokémon.
-            habilidades (list): Uma lista de habilidades do Pokémon.
-        """
-        evolucao = Pokemon(nome, tipo, regiao, habilidades)
-        self.evolucao = evolucao
-        print("Evolução adicionada com sucesso!")
 
-    def mostrar_evolucao(self):
+        Returns:
+            bool: True se o Pokémon existir, False caso contrário.
         """
-        Lista os Pokémons com evolução.
-        """
-        print("Evolução:")
-        print(
-            f"Nome: {self.evolucao.nome}, Tipo: {self.evolucao.tipo}, Região: {self.evolucao.regiao}, Habilidades: {self.evolucao.habilidades}"
-        )
+        return nome in [pokemon.nome for pokemon in self.pokemons]
