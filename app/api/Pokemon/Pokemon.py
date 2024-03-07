@@ -16,4 +16,3 @@ class Pokemon:
         self.regiao = regiao
         self.habilidades = habilidades
         self.evolucao = evolucao
-

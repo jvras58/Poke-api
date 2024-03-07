@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = "projeto de estudos"
+authors = ["yes"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+pytest-cov = "^4.1.0"
+taskipy = "^1.12.0"
+blue = "^0.9.1"
+ruff = "^0.1.3"
+httpx = "^0.25.0"
+isort = "^5.12.0"
+freezegun = "^1.2.2"
+
+[tool.ruff]
+line-length = 79
+exclude = ['.venv', 'alembic']
+
+[tool.isort]
+profile = "black"
+line_length = 79
+extend_skip = ['alembic']
+
+[tool.pytest.ini_options]
+pythonpath = "."
+
+[tool.blue]
+extend-exclude = '(alembic/)'
+
+[tool.taskipy.tasks]
+lint = 'ruff . && blue --check . --diff'
+format = 'blue .  && isort .'
+run = 'python app/startup.py'
+pre_test = 'task lint'
+test = 'pytest -s -x --cov=app -vv'
+post_test = 'coverage html'
+db = 'alembic upgrade head'
+db_down = 'alembic downgrade -1'
+db_migrate = 'alembic revision --autogenerate -m "migration"'
+container='docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -p 32770:5432 -d postgres'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

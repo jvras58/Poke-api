@@ -13,7 +13,8 @@ O projeto está dividido em 3 etapas:
 
 ## Requisitos
 
-- Python 3.12
+- [Python](https://www.python.org/)
+- [Poetry](https://python-poetry.org/docs/#installing-with-pipx)
 
 
 ## Instalação
@@ -29,7 +30,18 @@ O projeto está dividido em 3 etapas:
 
 ## Uso
 
-1. Para executar o console interativo:
+1. Para entrar no ambiente virtual do [Poetry](https://python-poetry.org/docs/#installing-with-pipx).
+
    ```bash
-   python app/startup.py
+   poetry shell
+   ```
+   instale as dependencias:
+
+   ```bash
+   poetry install
+   ```
+
+3. Para executar o console interativo:
+   ```bash
+   task run
    ```

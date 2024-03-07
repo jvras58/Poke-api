@@ -65,3 +65,27 @@ class Pokedex:
         print("Lista de Pokemons:")
         for pokemon in self.pokemons:
             print(f"Nome: {pokemon.nome}, Tipo: {pokemon.tipo}, Região: {pokemon.regiao}, Habilidades: {pokemon.habilidades}, Evolução: {pokemon.evolucao.nome if pokemon.evolucao else 'N/A'}")
+
+    # wip: Ainda esta em fase de desenvolvimento
+    def adicionar_evolucao(self, nome, tipo, regiao, habilidades):
+        """
+        Adiciona uma evolução ao objeto Pokedex.
+
+        Args:
+            nome (str): O nome do Pokémon.
+            tipo (str): O tipo do Pokémon.
+            regiao (str): A região do Pokémon.
+            habilidades (list): Uma lista de habilidades do Pokémon.
+        """
+        evolucao = Pokemon(nome, tipo, regiao, habilidades)
+        self.evolucao = evolucao
+        print("Evolução adicionada com sucesso!")
+
+    def mostrar_evolucao(self):
+        """
+        Lista os Pokémons com evolução.
+        """
+        print("Evolução:")
+        print(
+            f"Nome: {self.evolucao.nome}, Tipo: {self.evolucao.tipo}, Região: {self.evolucao.regiao}, Habilidades: {self.evolucao.habilidades}"
+        )

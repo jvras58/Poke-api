@@ -1,5 +1,8 @@
 from app.api.Pokedex.Pokedex import Pokedex
 
+# executa o teste: pytest test/test_Pokedex.py
+
+
 def test_adicionar_pokemon():
     pokedex = Pokedex()
     pokedex.adicionar_pokemon("Pikachu", "Elétrico", "Kanto", ["Choque do Trovão"])
@@ -9,4 +12,4 @@ def test_adicionar_pokemon():
     assert pokedex.pokemons[0].regiao == "Kanto"
     assert pokedex.pokemons[0].habilidades == ["Choque do Trovão"]
     assert pokedex.pokemons[0].evolucao is None
-    assert f"Pokemon: Pikachu adicionado com sucesso!"
+    assert "Pokemon: Pikachu adicionado com sucesso!"
