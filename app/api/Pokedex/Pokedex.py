@@ -1,4 +1,5 @@
-from Pokemon import Pokemon
+
+from api.Pokemon.Pokemon import Pokemon
 
 
 class Pokedex:

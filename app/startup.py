@@ -1,4 +1,6 @@
-from Pokedex import Pokedex
+
+from api.Pokedex.Pokedex import Pokedex
+
 
 def menu():
     """

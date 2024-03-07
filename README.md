@@ -31,5 +31,5 @@ O projeto está dividido em 3 etapas:
 
 1. Para executar o console interativo:
    ```bash
-   python main.py
+   python app/startup.py
    ```
