@@ -72,7 +72,6 @@ class Pokedex:
             ░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░╚════╝░░╚═════╝░░╚════╝░╚═╝
                 """
         )
-        # TODO: avaliar se é mesmo necessario termos essa lista inicializada vazia já que temos o self.pokemons que tbm é uma lista
         lista_pokemons = []
         for pokemon in self.pokemons:
             detalhes_pokemon = f"Nome: {pokemon.nome}, Tipo: {pokemon.tipo}, Região: {pokemon.regiao}, Habilidades: {pokemon.habilidades}, Evolução: {pokemon.evolucao.nome if pokemon.evolucao else 'N/A'}"
