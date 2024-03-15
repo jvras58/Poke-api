@@ -1,5 +1,4 @@
-
-from api.Pokemon.Pokemon import Pokemon
+from app.api.Pokemon.Pokemon import Pokemon
 
 
 class Pokedex:
@@ -9,20 +8,22 @@ class Pokedex:
         """
         self.pokemons = []
 
-    def adicionar_pokemon(self, nome, tipo, regiao, habilidades, evolucao=None):
-            """
-            Adiciona um novo Pokémon à Pokédex.
+    def adicionar_pokemon(
+        self, nome, tipo, regiao, habilidades, evolucao=None
+    ):
+        """
+        Adiciona um novo Pokémon à Pokédex.
 
-            Args:
-                nome (str): O nome do Pokémon.
-                tipo (str): O tipo do Pokémon.
-                regiao (str): A região de origem do Pokémon.
-                habilidades (list): Uma lista de habilidades do Pokémon.
-                evolucao (str, optional): O nome do Pokémon evoluído.
-            """
-            pokemon = Pokemon(nome, tipo, regiao, habilidades, evolucao)
-            self.pokemons.append(pokemon)
-            print(f"Pokemon: {pokemon.nome} adicionado com sucesso!")
+        Args:
+            nome (str): O nome do Pokémon.
+            tipo (str): O tipo do Pokémon.
+            regiao (str): A região de origem do Pokémon.
+            habilidades (list): Uma lista de habilidades do Pokémon.
+            evolucao (str, optional): O nome do Pokémon evoluído.
+        """
+        pokemon = Pokemon(nome, tipo, regiao, habilidades, evolucao)
+        self.pokemons.append(pokemon)
+        print(f'Pokemon: {pokemon.nome} adicionado com sucesso!')
 
     def atualizar_pokemon(self, nome, tipo, regiao, habilidades):
         """
@@ -40,9 +41,9 @@ class Pokedex:
                 pokemon.tipo = tipo
                 pokemon.regiao = regiao
                 pokemon.habilidades = habilidades
-                print(f"Pokemon: {pokemon.nome} atualizado com sucesso!")
+                print(f'Pokemon: {pokemon.nome} atualizado com sucesso!')
                 return
-        print(f"Pokemon: {nome} não encontrado.")
+        print(f'Pokemon: {nome} não encontrado.')
 
     def remover_pokemon(self, nome):
         """
@@ -54,23 +55,30 @@ class Pokedex:
         for pokemon in self.pokemons:
             if pokemon.nome == nome:
                 self.pokemons.remove(pokemon)
-                print(f"Pokemon: {pokemon.nome} removido com sucesso!")
+                print(f'Pokemon: {pokemon.nome} removido com sucesso!')
                 return
 
     def mostrar_pokemons(self):
         """
         Lista os Pokémons da Pokédex.
         """
-        print("""
+        print(
+            """
             ░█████╗░░█████╗░████████╗░█████╗░██╗░░░░░░█████╗░░██████╗░░█████╗░██╗
             ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██║░░░░░██╔══██╗██╔════╝░██╔══██╗╚═╝
             ██║░░╚═╝███████║░░░██║░░░███████║██║░░░░░██║░░██║██║░░██╗░██║░░██║░░░
             ██║░░██╗██╔══██║░░░██║░░░██╔══██║██║░░░░░██║░░██║██║░░╚██╗██║░░██║░░░
             ╚█████╔╝██║░░██║░░░██║░░░██║░░██║███████╗╚█████╔╝╚██████╔╝╚█████╔╝██╗
             ░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░╚════╝░░╚═════╝░░╚════╝░╚═╝
-                """)
+                """
+        )
+        #TODO: avaliar se é mesmo necessario termos essa lista inicializada vazia já que temos o self.pokemons que tbm é uma lista 
+        lista_pokemons = []
         for pokemon in self.pokemons:
-            print(f"Nome: {pokemon.nome}, Tipo: {pokemon.tipo}, Região: {pokemon.regiao}, Habilidades: {pokemon.habilidades}, Evolução: {pokemon.evolucao.nome if pokemon.evolucao else 'N/A'}")
+            detalhes_pokemon = f"Nome: {pokemon.nome}, Tipo: {pokemon.tipo}, Região: {pokemon.regiao}, Habilidades: {pokemon.habilidades}, Evolução: {pokemon.evolucao.nome if pokemon.evolucao else 'N/A'}"
+            print(detalhes_pokemon)
+            lista_pokemons.append(detalhes_pokemon)
+        return lista_pokemons
 
     def verificar_pokemon(self, nome):
         """
@@ -83,3 +91,6 @@ class Pokedex:
             bool: True se o Pokémon existir, False caso contrário.
         """
         return nome in [pokemon.nome for pokemon in self.pokemons]
+
+# TODO: Implementar evulação de pokemons...
+# TODO: implementar batalhas de pokemons...
