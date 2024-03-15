@@ -1,5 +1,5 @@
 
-from Pokemon.Pokemon import Pokemon
+from api.Pokemon.Pokemon import Pokemon
 
 
 class Pokedex:
@@ -61,7 +61,14 @@ class Pokedex:
         """
         Lista os Pokémons da Pokédex.
         """
-        print("Lista de Pokemons:")
+        print("""
+            ░█████╗░░█████╗░████████╗░█████╗░██╗░░░░░░█████╗░░██████╗░░█████╗░██╗
+            ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██║░░░░░██╔══██╗██╔════╝░██╔══██╗╚═╝
+            ██║░░╚═╝███████║░░░██║░░░███████║██║░░░░░██║░░██║██║░░██╗░██║░░██║░░░
+            ██║░░██╗██╔══██║░░░██║░░░██╔══██║██║░░░░░██║░░██║██║░░╚██╗██║░░██║░░░
+            ╚█████╔╝██║░░██║░░░██║░░░██║░░██║███████╗╚█████╔╝╚██████╔╝╚█████╔╝██╗
+            ░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░╚════╝░░╚═════╝░░╚════╝░╚═╝
+                """)
         for pokemon in self.pokemons:
             print(f"Nome: {pokemon.nome}, Tipo: {pokemon.tipo}, Região: {pokemon.regiao}, Habilidades: {pokemon.habilidades}, Evolução: {pokemon.evolucao.nome if pokemon.evolucao else 'N/A'}")
 

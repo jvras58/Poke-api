@@ -1,6 +1,29 @@
 from api.Pokedex.Pokedex import Pokedex
 
 
+def mostrar_pokemons_e_menu(pokedex):
+    """
+    Exibe um menu secundario de opções para interagir com a Pokedex.
+
+    Opções disponíveis:
+    1. Voltar ao menu principal
+    2. Sair
+    """
+    pokedex.mostrar_pokemons()
+    while True:
+        print("""
+        1. Voltar ao menu principal
+        2. Sair
+        """)
+        opcao = input("Escolha uma opção:")
+        if opcao == "1":
+            return
+        elif opcao == "2":
+            exit(0)
+        else:
+            print("Opção inválida. Tente novamente.")
+
+
 def menu():
     """
     Exibe um menu de opções para interagir com a Pokedex.
@@ -14,12 +37,23 @@ def menu():
     """
     pokedex = Pokedex()
     while True:
-        print("\n1. Adicionar Pokemon")
-        print("2. Mostrar Pokemons")
-        print("3. Atualizar Pokemon")
-        print("4. Remover Pokemon")
-        print("5. Sair")
-        opcao = input("Escolha uma opção: ")
+        print("""
+
+    ██████╗░░█████╗░██╗░░██╗███████╗██████╗░███████╗██╗░░██╗
+    ██╔══██╗██╔══██╗██║░██╔╝██╔════╝██╔══██╗██╔════╝╚██╗██╔╝
+    ██████╔╝██║░░██║█████═╝░█████╗░░██║░░██║█████╗░░░╚███╔╝░
+    ██╔═══╝░██║░░██║██╔═██╗░██╔══╝░░██║░░██║██╔══╝░░░██╔██╗░
+    ██║░░░░░╚█████╔╝██║░╚██╗███████╗██████╔╝███████╗██╔╝╚██╗
+    ╚═╝░░░░░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░╚══════╝╚═╝░░╚═╝
+
+        1. Adicionar Pokemon
+        2. Mostrar Pokemons
+        3. Atualizar Pokemon
+        4. Remover Pokemon
+        5. Sair
+        """)
+        opcao = input("Escolha uma opção:")
+        print(f"Você escolheu a opção: {opcao}")
         if opcao == '1':
             nome = input("Digite o nome do Pokemon: ")
             if pokedex.verificar_pokemon(nome):
@@ -30,7 +64,7 @@ def menu():
             habilidades = input("Digite as habilidades do Pokemon (separadas por vírgula): ").split(',')
             pokedex.adicionar_pokemon(nome, tipo, regiao, habilidades)
         elif opcao == '2':
-            pokedex.mostrar_pokemons()
+            mostrar_pokemons_e_menu(pokedex)
         elif opcao == '3':
             nome = input("Digite o nome do Pokemon: ")
             if not pokedex.verificar_pokemon(nome):
