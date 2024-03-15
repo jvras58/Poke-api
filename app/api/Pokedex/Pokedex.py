@@ -72,7 +72,7 @@ class Pokedex:
             ░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░╚════╝░░╚═════╝░░╚════╝░╚═╝
                 """
         )
-        #TODO: avaliar se é mesmo necessario termos essa lista inicializada vazia já que temos o self.pokemons que tbm é uma lista 
+        # TODO: avaliar se é mesmo necessario termos essa lista inicializada vazia já que temos o self.pokemons que tbm é uma lista
         lista_pokemons = []
         for pokemon in self.pokemons:
             detalhes_pokemon = f"Nome: {pokemon.nome}, Tipo: {pokemon.tipo}, Região: {pokemon.regiao}, Habilidades: {pokemon.habilidades}, Evolução: {pokemon.evolucao.nome if pokemon.evolucao else 'N/A'}"
@@ -91,6 +91,7 @@ class Pokedex:
             bool: True se o Pokémon existir, False caso contrário.
         """
         return nome in [pokemon.nome for pokemon in self.pokemons]
+
 
 # TODO: Implementar evulação de pokemons...
 # TODO: implementar batalhas de pokemons...

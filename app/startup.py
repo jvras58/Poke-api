@@ -1,5 +1,6 @@
 from api.Pokedex.Pokedex import Pokedex
 
+
 # TODO: verificar melhorias na exibição e na construção do codigo do menu...
 def mostrar_pokemons_e_menu(pokedex):
     """

@@ -4,6 +4,7 @@ from app.api.Pokedex.Pokedex import Pokedex
 
 # TODO: Implementar as fixtures para os testes de Pokedex (Don't repeat yourself)
 
+
 def test_adicionar_pokemon():
     """
     Testa o método adicionar_pokemon da classe Pokedex.
@@ -53,6 +54,20 @@ def test_atualizar_pokemon():
     assert 'Pokemon: Pikachu atualizado com sucesso!'
 
 
+def test_atualizar_pokemon_nao_encontrado():
+    """
+    Testa o método atualizar_pokemon da classe Pokedex.
+
+    Verifica se o método `atualizar_pokemon` retorna uma mensagem de erro quando o Pokemon não é encontrado.
+    O teste chama o método `atualizar_pokemon` para atualizar as informações de um Pokemon que não está na Pokedex.
+    """
+    pokedex = Pokedex()
+    pokedex.atualizar_pokemon(
+        'Pikachu', 'Elétrico', 'Kanto', ['Choque do Trovão']
+    )
+    assert 'Pokemon: Pikachu não encontrado.'
+
+
 def test_remover_pokemon():
     """
     Teste para o método `remover_pokemon` da classe Pokedex.
@@ -86,3 +101,18 @@ def test_mostrar_pokemons():
     assert any('Pikachu' in pokemon for pokemon in pokemons)
     assert any('Charmander' in pokemon for pokemon in pokemons)
     assert any('Squirtle' in pokemon for pokemon in pokemons)
+
+
+def test_verificar_pokemon():
+    """
+    Testa o método `verificar_pokemon` da classe Pokedex.
+
+    Verifica se o método `verificar_pokemon` retorna True para um Pokemon que está na Pokedex e False para um Pokemon que não está na Pokedex.
+    """
+    pokedex = Pokedex()
+    pokedex.adicionar_pokemon(
+        'Pikachu', 'Elétrico', 'Kanto', ['Choque do Trovão']
+    )
+    assert pokedex.verificar_pokemon('Pikachu') is True
+    assert pokedex.verificar_pokemon('Charmander') is False
+    assert pokedex.verificar_pokemon('Squirtle') is False
