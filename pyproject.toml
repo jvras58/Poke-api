@@ -7,6 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+pytest = "^8.1.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -35,7 +36,7 @@ pythonpath = "."
 extend-exclude = '(alembic/)'
 
 [tool.taskipy.tasks]
-lint = 'ruff . && blue --check . --diff'
+lint = 'ruff check . && blue --check . --diff'
 format = 'blue .  && isort .'
 run = 'python app/startup.py'
 pre_test = 'task lint'

@@ -1,4 +1,4 @@
-from api.Pokedex.Pokedex import Pokedex
+from app.api.Pokedex.Pokedex import Pokedex
 
 
 # TODO: verificar melhorias na exibição e na construção do codigo do menu...
@@ -87,6 +87,7 @@ def menu():
             nome = input('Digite o nome do Pokemon: ')
             if not pokedex.verificar_pokemon(nome):
                 print(f'Pokemon: {nome} não encontrado.')
+                # continue
             pokedex.remover_pokemon(nome)
         elif opcao == '5':
             break
@@ -94,4 +95,5 @@ def menu():
             print('Opção inválida. Tente novamente.')
 
 
-menu()
+if __name__ == '__main__':
+    menu()
