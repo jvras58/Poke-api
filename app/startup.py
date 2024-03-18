@@ -54,7 +54,8 @@ def menu():
         2. Mostrar Pokemons
         3. Atualizar Pokemon
         4. Remover Pokemon
-        5. Sair
+        5. Evoluir Pokemon
+        6. Sair
         """
         )
         opcao = input('Escolha uma opção:')
@@ -69,7 +70,17 @@ def menu():
             habilidades = input(
                 'Digite as habilidades do Pokemon (separadas por vírgula): '
             ).split(',')
-            pokedex.adicionar_pokemon(nome, tipo, regiao, habilidades)
+            pode_evoluir = (
+                input('O Pokemon pode evoluir? (sim/não): ').lower() == 'sim'
+            )
+            proxima_evolucao = None
+            if pode_evoluir:
+                proxima_evolucao = input(
+                    'Digite a próxima evolução do Pokemon: '
+                )
+            pokedex.adicionar_pokemon(
+                nome, tipo, regiao, habilidades, pode_evoluir, proxima_evolucao
+            )
         elif opcao == '2':
             mostrar_pokemons_e_menu(pokedex)
         elif opcao == '3':
@@ -90,6 +101,12 @@ def menu():
                 # continue
             pokedex.remover_pokemon(nome)
         elif opcao == '5':
+            nome = input('Digite o nome do Pokemon: ')
+            if not pokedex.verificar_pokemon(nome):
+                print(f'Pokemon: {nome} não encontrado.')
+                # continue
+            pokedex.evoluir_pokemon(nome)
+        elif opcao == '6':
             break
         else:
             print('Opção inválida. Tente novamente.')
